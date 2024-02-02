@@ -1,0 +1,468 @@
+create database DbmsProject;
+Query OK, 1 row affected (0.03 sec)
+
+mysql> use DbmsProject;
+Database changed
+mysql> CREATE TABLE `doctor` (
+    ->        `Doctor_ID` varchar(45) NOT NULL,
+    ->        `Doctor_Type` int(1) NOT NULL,
+    ->        `Speciality` varchar(45) DEFAULT NULL
+    ->      ) ENGINE=InnoDB DEFAULT CHARSET=utf8;	
+Query OK, 0 rows affected, 2 warnings (0.10 sec)
+desc doctor;
++-------------+-------------+------+-----+---------+-------+
+| Field       | Type        | Null | Key | Default | Extra |
++-------------+-------------+------+-----+---------+-------+
+| Doctor_ID   | varchar(45) | NO   |     | NULL    |       |
+| Doctor_Type | int         | NO   |     | NULL    |       |
+| Speciality  | varchar(45) | YES  |     | NULL    |       |
+					
+
+
+
+alter table doctor add primary key(Doctor_ID);
+Query OK, 0 rows affected (0.13 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> desc doctor;
++-------------+-------------+------+-----+---------+-------+
+| Field       | Type        | Null | Key | Default | Extra |
++-------------+-------------+------+-----+---------+-------+
+| Doctor_ID   | varchar(45) | NO   | PRI | NULL    |       |
+| Doctor_Type | int         | NO   |     | NULL    |       |
+| Speciality  | varchar(45) | YES  |     | NULL    |       |
+| Doctor_name | varchar(10) | YES  |     | NULL    |       |
++-------------+-------------+------+-----+---------+-------+
+
+
+
+mysql> INSERT INTO `doctor` (`Doctor_ID`, `Doctor_Type`, `Speciality`) VALUES('d1', 1, 'Radiology');
+Query OK, 1 row affected (0.02 sec)
+
+mysql> INSERT INTO `doctor` (`Doctor_ID`, `Doctor_Type`, `Speciality`) VALUES('d2', 1, 'Cardiology');
+Query OK, 1 row affected (0.03 sec)
+
+mysql> INSERT INTO `doctor` (`Doctor_ID`, `Doctor_Type`, `Speciality`) VALUES('d3', 1, 'Oncology');
+Query OK, 1 row affected (0.02 sec)
+
+mysql> INSERT INTO `doctor` (`Doctor_ID`, `Doctor_Type`, `Speciality`) VALUES('d4', 1, 'Oncology');
+Query OK, 1 row affected (0.02 sec)
+
+mysql> INSERT INTO `doctor` (`Doctor_ID`, `Doctor_Type`, `Speciality`) VALUES('d5', 1, 'Pediatrics');
+Query OK, 1 row affected (0.02 sec)
+
+mysql> select *from doctor;
++-----------+-------------+------------+
+| Doctor_ID | Doctor_Type | Speciality |
++-----------+-------------+------------+
+| d1        |           1 | Radiology  |
+| d2        |           1 | Cardiology |
+| d3        |           1 | Oncology   |
+| d4        |           1 | Oncology   |
+| d5        |           1 | Pediatrics |
++-----------+-------------+------------+
+5 rows in set (0.00 sec)
+
+mysql> alter table doctor add column Doctor_name varchar(10);
+Query OK, 0 rows affected (0.08 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> update doctor SET Doctor_name = 'Kalpita' where Doctor_ID = 'd1';
+Query OK, 1 row affected (0.01 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+mysql> update doctor SET Doctor_name = 'Ankita' where Doctor_ID = 'd2';
+Query OK, 1 row affected (0.01 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+mysql> update doctor SET Doctor_name = 'Aaditya' where Doctor_ID = 'd3';
+Query OK, 1 row affected (0.01 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+mysql> update doctor SET Doctor_name = 'Prasad' where Doctor_ID = 'd4';
+Query OK, 1 row affected (0.02 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+mysql> update doctor SET Doctor_name = 'Rutuja' where Doctor_ID = 'd5';
+Query OK, 1 row affected (0.02 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+mysql> select *from doctor;
++-----------+-------------+------------+-------------+
+| Doctor_ID | Doctor_Type | Speciality | Doctor_name |
++-----------+-------------+------------+-------------+
+| d1        |           1 | Radiology  | Kalpita     |
+| d2        |           1 | Cardiology | Ankita      |
+| d3        |           1 | Oncology   | Aaditya     |
+| d4        |           1 | Oncology   | Prasad      |
+| d5        |           1 | Pediatrics | Rutuja      |
++-----------+-------------+------------+-------------+
+5 rows in set (0.00 sec)
+mysql> CREATE TABLE `employee` (
+    ->       `Employee_ID` varchar(45) NOT NULL,
+    ->        `Employee_Type` int(10) NOT NULL,
+    ->        `FName` varchar(45) NOT NULL,
+    ->       `LName` varchar(45) NOT NULL
+    ->      ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+Query OK, 0 rows affected, 2 warnings (0.08 sec)
+
+mysql>
+mysql> desc employee;
++---------------+-------------+------+-----+---------+-------+
+| Field         | Type        | Null | Key | Default | Extra |
++---------------+-------------+------+-----+---------+-------+
+| Employee_ID   | varchar(45) | NO   |     | NULL    |       |
+| Employee_Type | int         | NO   |     | NULL    |       |
+| FName         | varchar(45) | NO   |     | NULL    |       |
+| LName         | varchar(45) | NO   |     | NULL    |       |
++---------------+-------------+------+-----+---------+-------+
+4 rows in set (0.02 sec)
+
+mysql> INSERT INTO `employee` (`Employee_ID`, `Employee_Type`, `FName`, `LName`) VALUES('d1', 1, 'Kalpita', 'Kote');
+Query OK, 1 row affected (0.02 sec)
+
+mysql> INSERT INTO `employee` (`Employee_ID`, `Employee_Type`, `FName`, `LName`)VALUES ('d2', 1, 'Ankita', 'Yerme');
+Query OK, 1 row affected (0.03 sec)
+
+mysql> INSERT INTO `employee` (`Employee_ID`, `Employee_Type`, `FName`, `LName`) VALUES('d3', 1, 'Aaditya', 'Dhamale');
+Query OK, 1 row affected (0.02 sec)
+
+mysql> INSERT INTO `employee` (`Employee_ID`, `Employee_Type`, `FName`, `LName`)VALUES('d4', 1, 'Prasad', 'Nalawade');
+Query OK, 1 row affected (0.03 sec)
+
+mysql> INSERT INTO `employee` (`Employee_ID`, `Employee_Type`, `FName`, `LName`)VALUES('d5', 1, 'Rutuja', 'Kapuskar');
+Query OK, 1 row affected (0.02 sec)
+INSERT INTO `employee` (`Employee_ID`, `Employee_Type`, `FName`, `LName`)VALUES('n1', 2, 'Avani', 'Khairnar');
+Query OK, 1 row affected (0.02 sec)
+INSERT INTO `employee` (`Employee_ID`, `Employee_Type`, `FName`, `LName`)VALUES('n2', 2, 'Shital', 'Shinde');
+Query OK, 1 row affected (0.03 sec)
+
+mysql> INSERT INTO `employee` (`Employee_ID`, `Employee_Type`, `FName`, `LName`)VALUES('n3', 2, 'Suchita', 'Chavan');
+Query OK, 1 row affected (0.03 sec)
+
+mysql> INSERT INTO `employee` (`Employee_ID`, `Employee_Type`, `FName`, `LName`)VALUES('n4', 2, 'Rutuja', 'Jadhav');
+Query OK, 1 row affected (0.03 sec)
+
+mysql> INSERT INTO `employee` (`Employee_ID`, `Employee_Type`, `FName`, `LName`)VALUES('n5', 2, 'Sakshi', 'Jadhav');
+Query OK, 1 row affected (0.03 sec)
+
+mysql>  INSERT INTO `employee` (`Employee_ID`, `Employee_Type`, `FName`, `LName`)VALUES('r1', 3, 'Gaurav', 'Hekade');
+Query OK, 1 row affected (0.02 sec)
+select *from employee;
++-------------+---------------+---------+-----------+
+| Employee_ID | Employee_Type | FName   | LName     |
++-------------+---------------+---------+-----------+
+| d1          |             1 | Kalpita | Kote      |
+| d2          |             1 | Ankita  | Yerme     |
+| d3          |             1 | Aaditya | Dhamale   |
+| d4          |             1 | Prasad  | Nalawade  |
+| d5          |             1 | Rutuja  | Kapuskar  |
+| n1          |             1 | Avani   | Khairnar  |
+| n2          |             1 | Shital  | Shinde    |
+| n3          |             1 | Suchita | Chavan    |
+| n4          |             1 | Rutuja  | Jadhav    |
+| n5          |             1 | Sakshi  | Jadhav    |
+| r1          |             3 | Gaurav  | Hekade    |
+| r2          |             3 | Gaurav  | Yesugade  |
+| r3          |             3 | Prajwal | Korade    |
+| r4          |             3 | Aniket  | Nawalkar  |
+| r5          |             3 | Pratik  | Gujarathi |
+			
+
+mysql> CREATE TABLE `employee_has_patient` (  `employee_Employee_ID` varchar(45) NOT NULL,  `patient_patient_ID` varchar(45) NOT NULL,  `employee_Type` int(10) NOT NULL DEFAULT '0') ENGINE=InnoDB DEFAULT CHARSET=utf8;
+Query OK, 0 rows affected, 2 warnings (0.09 sec)
+
+mysql> desc employee_has_patient;
++----------------------+-------------+------+-----+---------+-------+
+| Field                | Type        | Null | Key | Default | Extra |
++----------------------+-------------+------+-----+---------+-------+
+| employee_Employee_ID | varchar(45) | NO   |     | NULL    |       |
+| patient_patient_ID   | varchar(45) | NO   |     | NULL    |       |
+| employee_Type        | int         | NO   |     | 0       |       |
++----------------------+-------------+------+-----+---------+-------+
+3 rows in set (0.02 sec)
+
+mysql> INSERT INTO `employee_has_patient` (`employee_Employee_ID`, `patient_patient_ID`, `employee_Type`) VALUES('d1', 'p1', 1),('d2', 'p2', 1),('d3', 'p3', 1),('d4', 'p5', 1),('d5', 'p9', 1),('n1', 'p1', 2),('n2', 'p2', 2),('n3', 'p5', 2),('n4', 'p3', 2),('n5', 'p9', 2);
+Query OK, 10 rows affected (0.04 sec)
+Records: 10  Duplicates: 0  Warnings: 0
+
+mysql> select *from employee_has_patient;
++----------------------+--------------------+---------------+
+| employee_Employee_ID | patient_patient_ID | employee_Type |
++----------------------+--------------------+---------------+
+| d1                   | p1                 |             1 |
+| d2                   | p2                 |             1 |
+| d3                   | p3                 |             1 |
+| d4                   | p5                 |             1 |
+| d5                   | p9                 |             1 |
+| n1                   | p1                 |             2 |
+| n2                   | p2                 |             2 |
+| n3                   | p5                 |             2 |
+| n4                   | p3                 |             2 |
+| n5                   | p9                 |             2 |
++----------------------+--------------------+---------------+
+10 rows in set (0.00 sec)
+
+CREATE TABLE `nurse` (  `Nurse_ID` varchar(45) NOT NULL,  `Work_Type` int(1) NOT NULL,  `Speciality` varchar(45) DEFAULT NULL) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+Query OK, 0 rows affected, 2 warnings (0.07 sec)
+
+mysql> desc nurse;
++------------+-------------+------+-----+---------+-------+
+| Field      | Type        | Null | Key | Default | Extra |
++------------+-------------+------+-----+---------+-------+
+| Nurse_ID   | varchar(45) | NO   |     | NULL    |       |
+| Work_Type  | int         | NO   |     | NULL    |       |
+| Speciality | varchar(45) | YES  |     | NULL    |       |
++------------+-------------+------+-----+---------+-------+
+3 rows in set (0.02 sec)
+
+mysql> INSERT INTO `nurse` (`Nurse_ID`, `Work_Type`, `Speciality`) VALUES('n1', 2, 'midwifery');
+Query OK, 1 row affected (0.03 sec)
+
+mysql> INSERT INTO `nurse` (`Nurse_ID`, `Work_Type`, `Speciality`) VALUES( 'n2', 2, 'registered nurse');
+Query OK, 1 row affected (0.02 sec)
+mysql> INSERT INTO `nurse` (`Nurse_ID`, `Work_Type`, `Speciality`) VALUES( 'n3', 2, 'registered nurse');
+Query OK, 1 row affected (0.02 sec)
+
+mysql> INSERT INTO `nurse` (`Nurse_ID`, `Work_Type`, `Speciality`) VALUES('n4', 2, 'holistic nurse');
+Query OK, 1 row affected (0.02 sec)
+
+mysql> INSERT INTO `nurse` (`Nurse_ID`, `Work_Type`, `Speciality`) VALUES('n5', 2, 'holistic nurse');
+Query OK, 1 row affected (0.02 sec)
+mysql> select *from nurse;
++----------+-----------+------------------+
+| Nurse_ID | Work_Type | Speciality       |
++----------+-----------+------------------+
+| n1       |         2 | midwifery        |
+| n2       |         2 | registered nurse |
+| n3       |         2 | registered nurse |
+| n4       |         2 | holistic nurse   |
+| n5       |         2 | holistic nurse   |
++----------+-----------+------------------+
+5 rows in set (0.00 sec)
+
+CREATE TABLE `patient` ( `Patient_ID` varchar(45) NOT NULL,  `Fname` varchar(45) NOT NULL,  `Lname` varchar(45) NOT NULL,  `Minit` varchar(1) DEFAULT NULL,  `Birthday` varchar(10) DEFAULT NULL,  `Sex` varchar(10) DEFAULT NULL,  `Address` varchar(100) DEFAULT NULL,  `Weight` decimal(10,0) DEFAULT NULL,  `Height` decimal(10,0) DEFAULT NULL,  `blood_type` varchar(2) DEFAULT NULL,  `treatment` varchar(45) DEFAULT NULL,  `diagnosis` varchar(45) DEFAULT NULL) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+Query OK, 0 rows affected, 1 warning (0.06 sec)
+
+mysql> desc patient;
++------------+---------------+------+-----+---------+-------+
+| Field      | Type          | Null | Key | Default | Extra |
++------------+---------------+------+-----+---------+-------+
+| Patient_ID | varchar(45)   | NO   |     | NULL    |       |
+| Fname      | varchar(45)   | NO   |     | NULL    |       |
+| Lname      | varchar(45)   | NO   |     | NULL    |       |
+| Minit      | varchar(1)    | YES  |     | NULL    |       |
+| Birthday   | varchar(10)   | YES  |     | NULL    |       |
+| Sex        | varchar(10)   | YES  |     | NULL    |       |
+| Address    | varchar(100)  | YES  |     | NULL    |       |
+| Weight     | decimal(10,0) | YES  |     | NULL    |       |
+| Height     | decimal(10,0) | YES  |     | NULL    |       |
+| blood_type | varchar(2)    | YES  |     | NULL    |       |
+| treatment  | varchar(45)   | YES  |     | NULL    |       |
+| diagnosis  | varchar(45)   | YES  |     | NULL    |       |
++------------+---------------+------+-----+---------+-------+
+12 rows in set (0.02 sec)
+
+mysql> INSERT INTO `patient` (`patient_ID`, `Fname`, `Lname`, `Minit`, `Birthday`, `Sex`, `Address`, `Weight`, `Height`, `blood_type`, `treatment`, `diagnosis`) VALUES('p1', 'Sapna', 'Singh', 'M', '5/3/1996', 'F', '1300 Bob Lane', '177', '68', 'AB', 'Stomach ache', 'Food Poisoning');
+Query OK, 1 row affected (0.03 sec)
+
+mysql> INSERT INTO `patient` (`patient_ID`, `Fname`, `Lname`, `Minit`, `Birthday`, `Sex`, `Address`, `Weight`, `Height`, `blood_type`, `treatment`, `diagnosis`) VALUES('p2', 'Kriti', 'Sinha', 'M', '1/9/2010', 'F', '1300 Bob Lane', '187', '70', 'AB', 'Can\'t focus', 'ADHD');
+Query OK, 1 row affected (0.03 sec)
+
+mysql> INSERT INTO `patient` (`patient_ID`, `Fname`, `Lname`, `Minit`, `Birthday`, `Sex`, `Address`, `Weight`, `Height`, `blood_type`, `treatment`, `diagnosis`) VALUES ('p3', 'Aastha', 'Bade', 'F', '2/3/2000', 'F', '1300 Cinderella Lane', '131', '70', 'B', 'Headache', 'High Blood Pressure');
+Query OK, 1 row affected (0.02 sec)
+
+mysql> INSERT INTO `patient` (`patient_ID`, `Fname`, `Lname`, `Minit`, `Birthday`, `Sex`, `Address`, `Weight`, `Height`, `blood_type`, `treatment`, `diagnosis`) VALUES ('p5', 'Ankita', 'Yadav', 'M', '3/15/2002', 'F', '1300 Peele Lane', '147', '65', 'O', 'Head Hurts', 'High Blood Pressure');
+Query OK, 1 row affected (0.04 sec)
+
+mysql> INSERT INTO `patient` (`patient_ID`, `Fname`, `Lname`, `Minit`, `Birthday`, `Sex`, `Address`, `Weight`, `Height`, `blood_type`, `treatment`, `diagnosis`) VALUES('p9', 'Dipti', 'Satpute', 'C', '5/29/1997', 'F', '1300 Kidwell Lane', '178', '69', 'A', 'Can\'t Sleep', 'Insomnia');
+Query OK, 1 row affected (0.03 sec)
+
+mysql> select *from patient;
++------------+--------+---------+-------+-----------+------+----------------------+--------+--------+------------+--------------+---------------------+
+| Patient_ID | Fname  | Lname   | Minit | Birthday  | Sex  | Address              | Weight | Height | blood_type | treatment    | diagnosis           |
++------------+--------+---------+-------+-----------+------+----------------------+--------+--------+------------+--------------+---------------------+
+| p1         | Sapna  | Singh   | M     | 5/3/1996  | F    | 1300 Bob Lane        |    177 |     68 | AB         | Stomach ache | Food Poisoning      |
+| p2         | Kriti  | Sinha   | M     | 1/9/2010  | F    | 1300 Bob Lane        |    187 |     70 | AB         | Can't focus  | ADHD                |
+| p3         | Aastha | Bade    | F     | 2/3/2000  | F    | 1300 Cinderella Lane |    131 |     70 | B          | Headache     | High Blood Pressure |
+| p5         | Ankita | Yadav   | M     | 3/15/2002 | F    | 1300 Peele Lane      |    147 |     65 | O          | Head Hurts   | High Blood Pressure |
+| p9         | Dipti  | Satpute | C     | 5/29/1997 | F    | 1300 Kidwell Lane    |    178 |     69 | A          | Can't Sleep  | Insomnia            |
++------------+--------+---------+-------+-----------+------+----------------------+--------+--------+------------+--------------+---------------------+
+5 rows in set (0.01 sec)
+
+CREATE TABLE `patient_record` (  `record_ID` int(45) NOT NULL,  `patient_ID` varchar(45) NOT NULL,  `date_admitted` timestamp NULL DEFAULT NULL,  `date_released` timestamp NULL DEFAULT NULL) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+Query OK, 0 rows affected, 2 warnings (0.11 sec)
+
+mysql> desc patient_record;
++---------------+-------------+------+-----+---------+-------+
+| Field         | Type        | Null | Key | Default | Extra |
++---------------+-------------+------+-----+---------+-------+
+| record_ID     | int         | NO   |     | NULL    |       |
+| patient_ID    | varchar(45) | NO   |     | NULL    |       |
+| date_admitted | timestamp   | YES  |     | NULL    |       |
+| date_released | timestamp   | YES  |     | NULL    |       |
++---------------+-------------+------+-----+---------+-------+
+4 rows in set (0.02 sec)
+
+mysql> INSERT INTO `patient_record` (`record_ID`, `patient_ID`, `date_admitted`, `date_released`) VALUES(33, 'p1', '2005-09-21 14:56:43', '2015-06-16 04:14:44');
+Query OK, 1 row affected (0.02 sec)
+
+mysql> INSERT INTO `patient_record` (`record_ID`, `patient_ID`, `date_admitted`, `date_released`) VALUES(34, 'p2', '2008-12-12 16:45:11', '2012-12-15 05:25:47');
+Query OK, 1 row affected (0.02 sec)
+
+mysql> INSERT INTO `patient_record` (`record_ID`, `patient_ID`, `date_admitted`, `date_released`) VALUES(39, 'p3', '2004-12-20 07:32:39', '2010-03-25 08:28:54');
+Query OK, 1 row affected (0.02 sec)
+
+mysql> INSERT INTO `patient_record` (`record_ID`, `patient_ID`, `date_admitted`, `date_released`) VALUES(40, 'p5', '2015-08-10 08:18:08', '2011-10-06 18:32:02');
+Query OK, 1 row affected (0.03 sec)
+
+mysql> INSERT INTO `patient_record` (`record_ID`, `patient_ID`, `date_admitted`, `date_released`) VALUES(42, 'p9', '2010-03-25 08:28:54', '2004-12-20 07:32:39');
+Query OK, 1 row affected (0.02 sec)
+
+mysql> select *from patient_record;
++-----------+------------+---------------------+---------------------+
+| record_ID | patient_ID | date_admitted       | date_released       |
++-----------+------------+---------------------+---------------------+
+|        33 | p1         | 2005-09-21 14:56:43 | 2015-06-16 04:14:44 |
+|        34 | p2         | 2008-12-12 16:45:11 | 2012-12-15 05:25:47 |
+|        39 | p3         | 2004-12-20 07:32:39 | 2010-03-25 08:28:54 |
+|        40 | p5         | 2015-08-10 08:18:08 | 2011-10-06 18:32:02 |
+|        42 | p9         | 2010-03-25 08:28:54 | 2004-12-20 07:32:39 |
++-----------+------------+---------------------+---------------------+
+5 rows in set (0.00 sec)
+mysql> delete from patient_record where record_ID = '33';
+Query OK, 1 row affected (0.02 sec)
+
+mysql> select *from patient_record;
++-----------+------------+---------------------+---------------------+
+| record_ID | patient_ID | date_admitted       | date_released       |
++-----------+------------+---------------------+---------------------+
+|        34 | p2         | 2008-12-12 16:45:11 | 2012-12-15 05:25:47 |
+|        39 | p3         | 2004-12-20 07:32:39 | 2010-03-25 08:28:54 |
+|        40 | p5         | 2015-08-10 08:18:08 | 2011-10-06 18:32:02 |
+|        42 | p9         | 2010-03-25 08:28:54 | 2004-12-20 07:32:39 |
++-----------+------------+---------------------+---------------------+
+4 rows in set (0.01 sec)
+
+mysql> INSERT INTO `patient_record` (`record_ID`, `patient_ID`, `date_admitted`, `date_released`) VALUES(33, 'p1', '2005-09-21 14:56:43', '2015-06-16 04:14:44');
+Query OK, 1 row affected (0.02 sec)
+mysql> select *from patient_record;
++-----------+------------+---------------------+---------------------+
+| record_ID | patient_ID | date_admitted       | date_released       |
++-----------+------------+---------------------+---------------------+
+|        34 | p2         | 2008-12-12 16:45:11 | 2012-12-15 05:25:47 |
+|        39 | p3         | 2004-12-20 07:32:39 | 2010-03-25 08:28:54 |
+|        40 | p5         | 2015-08-10 08:18:08 | 2011-10-06 18:32:02 |
+|        42 | p9         | 2010-03-25 08:28:54 | 2004-12-20 07:32:39 |
+|        33 | p1         | 2005-09-21 14:56:43 | 2015-06-16 04:14:44 |
++-----------+------------+---------------------+---------------------+
+5 rows in set (0.01 sec)
+mysql>  CREATE TABLE `receptionist` (  `Receptionist_ID` varchar(45) NOT NULL,  `Receptionist_Type` int(1) NOT NULL, `Receptionist_name` varchar(20) NOT NULL) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+Query OK, 0 rows affected, 2 warnings (0.07 sec)
+desc receptionist;
++-------------------+-------------+------+-----+---------+-------+
+| Field             | Type        | Null | Key | Default | Extra |
++-------------------+-------------+------+-----+---------+-------+
+| Receptionist_ID   | varchar(45) | NO   |     | NULL    |       |
+| Receptionist_Type | int         | NO   |     | NULL    |       |
+| Receptionist_name | varchar(20) | NO   |     | NULL    |       |
++-------------------+-------------+------+-----+---------+-------+
+mysql> INSERT INTO `receptionist` (`Receptionist_ID`, `Receptionist_Type`, `Receptionist_name`) VALUES('r1', 3, 'Gaurav Hekade'),('r2', 3, 'Gaurav Yesugade'),('r3', 3, 'Prajwal Korade'),('r4', 3, 'Aniket Nawalkar'),('r5', 3, 'Pratik Gujrathi');
+Query OK, 5 rows affected (0.02 sec)
+
+mysql> select *from receptionist;
++-----------------+-------------------+-------------------+
+| Receptionist_ID | Receptionist_Type | Receptionist_name |
++-----------------+-------------------+-------------------+
+| r1              |                 3 | Gaurav Hekade     |
+| r2              |                 3 | Gaurav Yesugade   |
+| r3              |                 3 | Prajwal Korade    |
+| r4              |                 3 | Aniket Nawalkar   |
+| r5              |                 3 | Pratik Gujrathi   |
+		
+
+
+
+
+
+
+
+1st query 
+select Patient_ID, Fname, Lname, blood_type from patient where blood_type = 'AB';
++------------+-------+-------+------------+
+| Patient_ID | Fname | Lname | blood_type |
++------------+-------+-------+------------+
+| p1         | Sapna | Singh | AB         |
+| p2         | Kriti | Sinha | AB         |
+			
+
+2nd query
+show tables;
++-----------------------+
+| Tables_in_dbmsproject |
++-----------------------+
+| doctor                |
+| employee              |
+| employee_has_patient  |
+| nurse                 |
+| patient               |
+| patient_record        |
+| receptionist          |
++-----------------------+
+7 rows in set (0.01 sec)
+
+3rd query
+mysql> select doctor_name, Speciality from doctor;
++-------------+------------+
+| doctor_name | Speciality |
++-------------+------------+
+| Kalpita     | Radiology  |
+| Ankita      | Cardiology |
+| Aaditya     | Oncology   |
+| Prasad      | Oncology   |
+| Rutuja      | Pediatrics |
+	
+
+4th query
+select Patient_ID, Fname, Lname, treatment from patient;
++------------+--------+---------+--------------+
+| Patient_ID | Fname  | Lname   | treatment    |
++------------+--------+---------+--------------+
+| p9         | Dipti  | Satpute | Can't Sleep  |
+| p1         | Sapna  | Singh   | Stomach ache |
+| p3         | Aastha | Bade    | Headache     |
+| p2         | Kriti  | Sinha   | Can't focus  |
+| p5         | Ankita | Yadav   | Head Hurts   |
++------------+--------+---------+--------------+
+5 rows in set (0.00 sec)
+5 th query 
+select Employee_ID from employee;
++-------------+
+| Employee_ID |
++-------------+
+| d1          |
+| d2          |
+| d3          |
+| d4          |
+| d5          |
+| n1          |
+| n2          |
+| n3          |
+| n4          |
+| n5          |
+| r1          |
+| r2          |
+| r3          |
+| r4          |
+| r5          |
++-------------+
+15 rows in set (0.01 sec)
+6 query
+mysql> select Patient_ID, Fname, Lname, blood_type from patient where blood_type = 'O';
++------------+--------+-------+------------+
+| Patient_ID | Fname  | Lname | blood_type |
++------------+--------+-------+------------+
+| p5         | Ankita | Yadav | O          |
++------------+--------+-------+------------+
+1 row in set (0.00 sec)
+
